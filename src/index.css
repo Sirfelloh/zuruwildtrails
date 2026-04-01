@@ -66,7 +66,7 @@ body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; font
   box-shadow: none;
 }
 
-.logo-text { margin: 0; font-size: 2.5rem; letter-spacing: 1px; }
+.logo-text { margin: 0; font-size: clamp(1.5rem, 5vw, 2.5rem); letter-spacing: 1px; }
 .cursor { animation: blink 1s step-end infinite; color: #fff; font-weight: normal; margin-left: 4px; }
 @keyframes blink { 50% { opacity: 0; } }
 
@@ -109,9 +109,9 @@ body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; font
   .nav-toggle { display: inline-flex; align-items: center; transition: transform 160ms ease; }
   .navbar { position: relative; }
   /* Hidden by collapsing max-height + fade + slight translate */
-  .navbar .links { display: block; position: absolute; top: 100%; left: 0; right: 0; background: #fff; padding: 0 16px; box-shadow: 0 12px 40px rgba(2,6,23,0.08); border-radius: 0 0 12px 12px; z-index: 50; max-height: 0; overflow: hidden; opacity: 0; transform: translateY(-6px); transition: max-height 360ms cubic-bezier(.22,1,.36,1), opacity 220ms ease, transform 220ms ease; }
+  .navbar .links { display: block; position: absolute; top: 100%; left: 0; right: 0; background: #001f3f; padding: 0 16px; box-shadow: 0 12px 40px rgba(2,6,23,0.3); border-radius: 0 0 12px 12px; z-index: 50; max-height: 0; overflow: hidden; opacity: 0; transform: translateY(-6px); transition: max-height 360ms cubic-bezier(.22,1,.36,1), opacity 220ms ease, transform 220ms ease; }
   .navbar .links ul { flex-direction: column; gap: 12px; margin: 8px 0; padding: 12px 0; }
-  .navbar .links a { display: block; padding: 10px 12px; }
+  .navbar .links .nav-btn { display: block; border-radius: 8px; text-align: center; }
   .navbar.open .links { max-height: 600px; opacity: 1; transform: translateY(0); }
   .nav-toggle.open { transform: rotate(90deg); }
 }
@@ -249,22 +249,17 @@ body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; font
 
 /* Responsive */
 @media (max-width: 800px) {
-  .hero-slider { height: 320px; }
-  .slide img { height: 320px; }
   .hero-overlay { 
-    left: 90px; 
-    right: 90px; 
-    top: auto; 
-    bottom: 20px; 
-    transform: none;
-    max-width: 540px; 
+    left: 5%; 
+    right: 5%; 
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 90%; 
   }
 }
 @media (max-width: 480px) {
-  .hero-slider { height: 240px; }
-  .slide img { height: 240px; }
-  .hero-overlay h1 { font-size: 18px; }
-  .hero-overlay p { display: none; }
+  .hero-overlay { padding: 20px; }
+  .hero-overlay h1 { font-size: 24px; }
   .flutter-logo { width: 36px; }
   /* nav links are handled via max-height animation in smaller breakpoints */
 }
