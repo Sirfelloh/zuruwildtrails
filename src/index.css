@@ -111,7 +111,7 @@ body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; font
   /* Hidden by collapsing max-height + fade + slight translate */
   .navbar .links { display: block; position: absolute; top: 100%; left: 0; right: 0; background: #001f3f; padding: 0 16px; box-shadow: 0 12px 40px rgba(2,6,23,0.3); border-radius: 0 0 12px 12px; z-index: 50; max-height: 0; overflow: hidden; opacity: 0; transform: translateY(-6px); transition: max-height 360ms cubic-bezier(.22,1,.36,1), opacity 220ms ease, transform 220ms ease; }
   .navbar .links ul { flex-direction: column; gap: 12px; margin: 8px 0; padding: 12px 0; }
-  .navbar .links .nav-btn { display: block; border-radius: 8px; text-align: center; }
+  .navbar .links .nav-btn { display: block; border-radius: 8px; text-align: center; background: #fff; color: #001f3f; border: none; font-weight: bold; padding: 12px; }
   .navbar.open .links { max-height: 600px; opacity: 1; transform: translateY(0); }
   .nav-toggle.open { transform: rotate(90deg); }
 }
