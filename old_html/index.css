@@ -1,0 +1,470 @@
+/* Base reset */
+* { box-sizing: border-box; }
+html { height: 100%; }
+body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; color: #111827; }
+
+/* Navbar */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #ffffff;
+  padding: 12px 24px;
+  border-bottom: 1px solid #e6e6e6;
+  box-shadow: 0 2px 6px rgba(16, 24, 40, 0.04);
+}
+
+.navbar .logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.flutter-logo {
+  width: 48px; /* suitable for professional sites */
+  height: auto;
+  display: block;
+}
+
+.navbar .links ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar .links a {
+  color: #111827;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.navbar .links a:hover {
+  background: #f3f4f6;
+}
+
+/* active nav link */
+.navbar .links a.active {
+  background: #0b1220;
+  color: #fff;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .navbar {
+    padding: 10px 16px;
+  }
+  .flutter-logo { width: 40px; }
+  .navbar .links ul { gap: 12px; }
+  .navbar .links a { font-size: 15px; }
+}
+
+/* Mobile nav toggle */
+.nav-toggle { display: none; background: transparent; border: 0; padding: 6px; margin-left: 12px; cursor: pointer; border-radius: 8px; }
+.nav-toggle img { width: 26px; height: 26px; display: block; }
+
+@media (max-width: 720px) {
+  .nav-toggle { display: inline-flex; align-items: center; transition: transform 160ms ease; }
+  .navbar { position: relative; }
+  /* Hidden by collapsing max-height + fade + slight translate */
+  .navbar .links { display: block; position: absolute; top: 100%; left: 0; right: 0; background: #fff; padding: 0 16px; box-shadow: 0 12px 40px rgba(2,6,23,0.08); border-radius: 0 0 12px 12px; z-index: 50; max-height: 0; overflow: hidden; opacity: 0; transform: translateY(-6px); transition: max-height 360ms cubic-bezier(.22,1,.36,1), opacity 220ms ease, transform 220ms ease; }
+  .navbar .links ul { flex-direction: column; gap: 12px; margin: 8px 0; padding: 12px 0; }
+  .navbar .links a { display: block; padding: 10px 12px; }
+  .navbar.open .links { max-height: 600px; opacity: 1; transform: translateY(0); }
+  .nav-toggle.open { transform: rotate(90deg); }
+}
+
+@media (max-width: 480px) {
+  .navbar .links { padding-left: 12px; padding-right: 12px; }
+} 
+
+/* Hero slider */
+.hero { 
+    position: relative; 
+    overflow: hidden; 
+    background: #000; 
+}
+.hero-slider { 
+    position: relative; 
+    height: 420px; 
+}
+.slides { 
+    display: flex; 
+    transition: transform 600ms cubic-bezier(0.22,1,0.36,1); 
+}
+.slide { 
+    min-width: 100%; 
+    display: flex; 
+}
+.slide figure { 
+    margin: 0; 
+    flex: 1 1 0; overflow: hidden; 
+}
+.slide img { 
+    width: 100%; 
+    height: 420px; 
+    object-fit: cover; 
+    display: block; 
+}
+
+.hero-overlay { 
+    position: absolute; 
+    left: 100px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    color: #fff; 
+    max-width: 520px; 
+    background: rgba(0,0,0,0.35); 
+    padding: 16px 20px; 
+    border-radius: 12px; 
+    box-shadow: 0 8px 30px rgba(2,6,23,0.5); 
+}
+.hero-overlay h1 { 
+    margin: 0 0 8px; 
+    font-size: 28px; 
+    line-height: 1.05; 
+}
+.hero-overlay p { 
+    margin: 0 0 12px; 
+    opacity: 0.95; 
+}
+.hero-overlay .cta { 
+    display: inline-block; 
+    background: #fff; 
+    color: #0b1220; 
+    padding: 8px 14px; 
+    border-radius: 8px; 
+    text-decoration: none; 
+    font-weight: 700; 
+}
+
+.nav { 
+    position: absolute; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    background: rgba(255,255,255,0.92); 
+    border: 0; 
+    width: 44px; 
+    height: 44px; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    cursor: pointer; 
+    box-shadow: 0 6px 20px rgba(2,6,23,0.12); 
+    font-size: 22px; 
+}
+.nav.prev { 
+    left: 12px; 
+}
+.nav.next { 
+    right: 12px; 
+}
+
+.dots { 
+    position: absolute; 
+    bottom: 12px; left: 50%; 
+    transform: translateX(-50%); 
+    display: flex; gap: 8px; 
+}
+.dots button { 
+    width: 10px; 
+    height: 10px; 
+    border-radius: 50%; 
+    border: 0; 
+    background: rgba(255,255,255,0.6); cursor: pointer; 
+}
+.dots button.active { 
+    background: #fff; 
+    box-shadow: 0 4px 10px rgba(2,6,23,0.12); 
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .hero-slider { height: 320px; }
+  .slide img { height: 320px; }
+  .hero-overlay { 
+    left: 90px; 
+    right: 90px; 
+    top: auto; 
+    bottom: 20px; 
+    transform: none;
+    max-width: 540px; 
+  }
+}
+@media (max-width: 480px) {
+  .hero-slider { height: 240px; }
+  .slide img { height: 240px; }
+  .hero-overlay h1 { font-size: 18px; }
+  .hero-overlay p { display: none; }
+  .flutter-logo { width: 36px; }
+  /* nav links are handled via max-height animation in smaller breakpoints */
+}
+
+/* Safaris cards */
+.safaris { 
+  padding: 56px 20px; 
+  background: #fafafa; 
+}
+.safaris .container { 
+  max-width: 1180px; 
+  margin: 0 auto; 
+}
+.safaris h2 { 
+  margin: 0 0 8px; 
+  font-size: 28px; 
+}
+.safaris .intro { 
+  margin: 0 0 20px; 
+  color: #475569; 
+}
+
+.cards { 
+  display: grid; 
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 20px; 
+}
+.card { 
+  background: #fff; 
+  border-radius: 12px; 
+  overflow: hidden; 
+  box-shadow: 0 8px 30px rgba(2,6,23,0.06); 
+  display:flex; 
+  flex-direction:column; 
+}
+.card img { 
+  width: 100%; 
+  height: 160px; 
+  object-fit: cover; 
+  display:block; 
+}
+.card-body { 
+  padding: 14px; 
+  display:flex; 
+  flex-direction:column; 
+  gap:8px; flex:1; 
+}
+.card-body h3 { 
+  margin:0; 
+  font-size: 18px; 
+}
+.meta { 
+  display:flex; 
+  gap:10px;
+  color:#6b7280; 
+  font-weight:600; 
+}
+.meta .date { 
+  color:#374151; 
+  font-weight:700; 
+}
+.meta .price { 
+  margin-left:auto; 
+  color:#0b1220; 
+}
+.status { 
+  padding:6px 10px; 
+  border-radius: 999px; 
+  font-weight:700; 
+  font-size:13px; 
+  display:inline-block; 
+}
+.status.available { 
+  background: #ecfdf5; 
+  color: #065f46; 
+}
+.status.unavailable { 
+  background: #fff1f2; 
+  color: #991b1b; 
+}
+.btn { 
+  display:inline-block;
+  margin-top:auto; 
+  text-decoration:none; 
+  background:#0b1220; 
+  color:#fff; 
+  padding:8px 12px; 
+  border-radius:8px; 
+  font-weight:700; 
+  text-align:center; 
+}
+.btn.disabled { background:#d1d5db; color:#6b7280; cursor:not-allowed; }
+
+@media (max-width: 1000px) {
+  .cards { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 720px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+  .card img { height: 140px; }
+}
+@media (max-width: 480px) {
+  .cards { grid-template-columns: 1fr; }
+  .card img { height: 200px; }
+}
+
+/* Filters */
+.controls { 
+  display:flex; 
+  justify-content:flex-end; 
+  margin-bottom:12px; 
+}
+.filters { 
+  display:flex; 
+  gap:8px; 
+}
+.filter { 
+  background:transparent; 
+  border:1px solid #e6e6e6;
+  padding:8px 12px; 
+  border-radius:8px; 
+  cursor:pointer; 
+  font-weight:700; 
+  color:#0b1220; 
+}
+.filter.active { 
+  background:#0b1220; 
+  color:#fff;
+  border-color:#0b1220; 
+}
+
+/* Footer */
+.site-footer { 
+  background:#0b1220; 
+  color:#fff; 
+  padding:48px 20px 24px; 
+  margin-top: auto; 
+}
+.site-footer .footer-grid { 
+  max-width:1180px; 
+  margin:0 auto; 
+  display:grid; 
+  grid-template-columns: 2fr 1fr 1fr 1fr; 
+  gap:24px; 
+  align-items:start; 
+}
+.site-footer h3, .site-footer h4 { margin:0 0 8px; }
+.site-footer p, .site-footer a { 
+  color:rgba(255,255,255,0.9); 
+  text-decoration:none; 
+}
+.site-footer .social-links { 
+  display: grid; 
+  grid-template-columns: repeat(2, 1fr); 
+  gap:12px; 
+}
+.site-footer .social { 
+  display:flex; 
+  align-items:center; 
+  justify-content:flex-start; 
+  gap:10px; 
+  padding:10px 12px; 
+  height:48px; 
+  border-radius:10px; 
+  background:#fff; 
+  color:#0b1220; 
+  text-decoration:none; 
+  font-weight:700;
+  border:1px solid rgba(2,6,23,0.06); 
+}
+.site-footer .social .social-icon { 
+  width:22px; 
+  height:22px; 
+  display:block; 
+  margin-right:8px; 
+}
+.site-footer .social.facebook{ 
+  border-left:6px solid #1877F2; 
+}
+.site-footer .social.instagram{ border-left:6px solid #E1306C; }
+.site-footer .social.x{ border-left:6px solid #000; }
+.site-footer .social.youtube{ border-left:6px solid #FF0000; }
+.site-footer .social:hover{ 
+  transform:translateY(-3px); 
+  box-shadow:0 8px 24px rgba(2,6,23,0.06); 
+}
+
+@media (max-width:480px){
+  .site-footer .social-links{ grid-template-columns: 1fr; }
+}
+.site-footer .footer-bottom { text-align:center; margin-top:20px; color:rgba(255,255,255,0.7); font-size:14px; }
+
+@media (max-width: 880px) {
+  .site-footer .footer-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Travel guide styles */
+.travel-page { 
+  background-image: url('assets/images/maasai-mara-8-750x450.jpg'); 
+  background-attachment: fixed; 
+  background-size: cover; 
+  background-position: center; 
+}
+/* subtle overlay so the background doesn't overpower the content */
+.travel-page::before { 
+  content: ''; 
+  position: fixed; 
+  inset: 0; 
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(6,10,15,0.08)); 
+  pointer-events: none; z-index: 0; 
+}
+
+.travel-guide { 
+  line-height: 1.7; 
+  color: #0f1720; 
+  position: relative; 
+  z-index: 1; 
+  background: rgba(255,255,255,0.88); 
+  border-radius: 14px; 
+  padding: 28px; 
+  box-shadow: 0 12px 40px rgba(2,6,23,0.08); 
+  backdrop-filter: blur(6px); 
+  border: 1px solid rgba(2,6,23,0.04); 
+}
+.travel-guide h1 { 
+  font-size: 28px;
+  margin-bottom: 12px; 
+}
+.travel-guide h2 { 
+  font-size: 20px; 
+  margin-top: 18px;
+  margin-bottom: 8px; 
+}
+.travel-guide h3 { 
+  font-size: 16px; 
+  margin-top: 12px; 
+  margin-bottom: 8px; 
+}
+.travel-guide p { margin-bottom: 12px; }
+.travel-guide ul { 
+  padding-left: 20px; 
+  margin-bottom: 12px; 
+}
+.travel-guide hr { 
+  border: none; 
+  border-top: 1px solid rgba(15,23,32,0.06); 
+  margin: 20px 0; 
+}
+@media (max-width:980px){ 
+  .travel-guide { padding: 22px; } 
+}
+@media (max-width:720px){
+  .travel-guide { 
+    padding: 16px; 
+    border-radius: 10px; 
+    background: rgba(255,255,255,0.95); 
+  }
+  .travel-guide h1{ font-size:22px; }
+  .travel-page::before { 
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(6,10,15,0.06)); 
+  }
+}
+
+@media (max-width: 480px) {
+  .site-footer .footer-grid { grid-template-columns: 1fr; }
+  .controls { justify-content:flex-start; }
+}

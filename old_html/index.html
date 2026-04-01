@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+  <!-- NAVBAR SECTION -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="assets/logos/flutter_dash_24dp_E3E3E3.svg" alt="flutter dash" class="flutter-logo">
+            <h1>Safari Ke</h1>
+        </div>
+        <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+          <img src="assets/logos/menu_24dp_E3E3E3.svg" alt="menu" />
+        </button>
+        <div class="links">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="safaris.html">Safaris</a></li>
+                <li><a href="travel-info.html">Travel Info</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </div>
+    <!-- END NAVBAR -->
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+      <div class="hero-slider">
+        <div class="slides"></div>
+
+        <button class="nav prev" aria-label="Previous slide">‹</button>
+        <button class="nav next" aria-label="Next slide">›</button>
+
+        <div class="dots" aria-hidden="true"></div>
+
+        <div class="hero-overlay">
+          <h1>Safaris Ke — Explore Kenya's Wild Heart</h1>
+          <p>Tailor-made safari experiences across the Masai Mara, Amboseli and beyond. Expert guides, responsible travel, and unforgettable wildlife encounters.</p>
+          <a class="cta" href="about.html">Learn More</a>
+        </div>
+      </div>
+    </section>
+<!-- HERO SECTION END -->
+
+
+    <section class="safaris">
+      <div class="container">
+        <h2>Available Safaris</h2>
+        <p class="intro">Choose from curated safari packages across Kenya's most iconic parks and conservancies. Dates and prices shown — book while spaces last!</p>
+
+        <div class="controls">
+          <div class="filters" role="tablist" aria-label="Filter safaris">
+            <button class="filter active" data-filter="all" aria-pressed="true">All</button>
+            <button class="filter" data-filter="available" aria-pressed="false">Available</button>
+          </div>
+        </div>
+
+        <div class="cards">
+
+          <article class="card" data-available="true">
+            <img src="assets/images/Discover The Wonders Of Masai Mara.jpg" alt="Masai Mara">
+            <div class="card-body">
+              <h3>Masai Mara National Reserve</h3>
+              <div class="meta">
+                <span class="date">June 10–16, 2026</span>
+                <span class="price">KES 98,000</span>
+              </div>
+              <div class="status available">Available</div>
+              <a class="btn" href="#">Book Now</a>
+            </div>
+          </article>
+
+          <article class="card" data-available="true">
+            <img src="assets/images/hero (2).jpg" alt="Amboseli">
+            <div class="card-body">
+              <h3>Amboseli National Park</h3>
+              <div class="meta">
+                <span class="date">July 3–8, 2026</span>
+                <span class="price">KES 82,500</span>
+              </div>
+              <div class="status available">Available</div>
+              <a class="btn" href="#">Book Now</a>
+            </div>
+          </article>
+
+          <article class="card" data-available="false">
+            <img src="assets/images/elephants-on-a-game-drive-in-the-masai-mara.jpg" alt="Tsavo East">
+            <div class="card-body">
+              <h3>Tsavo East National Park</h3>
+              <div class="meta">
+                <span class="date">August 12–18, 2026</span>
+                <span class="price">KES 74,000</span>
+              </div>
+              <div class="status unavailable">Fully booked</div>
+              <button class="btn disabled" disabled>Sold out</button>
+            </div>
+          </article>
+
+          <article class="card" data-available="true">
+            <img src="assets/images/hero (4).jpg" alt="Tsavo West">
+            <div class="card-body">
+              <h3>Tsavo West National Park</h3>
+              <div class="meta">
+                <span class="date">September 5–10, 2026</span>
+                <span class="price">KES 76,500</span>
+              </div>
+              <div class="status available">Available</div>
+              <a class="btn" href="#">Book Now</a>
+            </div>
+          </article>
+
+          <article class="card" data-available="false">
+            <img src="assets/images/hero (5).jpg" alt="Samburu">
+            <div class="card-body">
+              <h3>Samburu National Reserve</h3>
+              <div class="meta">
+                <span class="date">July 20–26, 2026</span>
+                <span class="price">KES 89,000</span>
+              </div>
+              <div class="status unavailable">Fully booked</div>
+              <button class="btn disabled" disabled>Sold out</button>
+            </div>
+          </article>
+
+          <article class="card" data-available="true">
+            <img src="assets/images/KE_MasaiMara_AsiliaRekeroCampWildlifeMigration.jpg" alt="Lake Nakuru">
+            <div class="card-body">
+              <h3>Lake Nakuru National Park</h3>
+              <div class="meta">
+                <span class="date">June 28–July 2, 2026</span>
+                <span class="price">KES 64,000</span>
+              </div>
+              <div class="status available">Available</div>
+              <a class="btn" href="#">Book Now</a>
+            </div>
+          </article>
+
+          <article class="card" data-available="true">
+            <img src="assets/images/Guepardo-durante-el-safari-en-kenia-masai-mara-1.jpg" alt="Ol Pejeta">
+            <div class="card-body">
+              <h3>Ol Pejeta Conservancy</h3>
+              <div class="meta">
+                <span class="date">October 1–6, 2026</span>
+                <span class="price">KES 120,000</span>
+              </div>
+              <div class="status available">Available</div>
+              <a class="btn" href="#">Book Now</a>
+            </div>
+          </article>
+
+          <article class="card" data-available="true">
+            <img src="assets/images/Leopard and her cubs are in the wild.jpg" alt="Lewa">
+            <div class="card-body">
+              <h3>Lewa Wildlife Conservancy</h3>
+              <div class="meta">
+                <span class="date">November 9–14, 2026</span>
+                <span class="price">KES 150,000</span>
+              </div>
+              <div class="status available">Available</div>
+              <a class="btn" href="#">Book Now</a>
+            </div>
+          </article>
+
+          <article class="card" data-available="false">
+            <img src="assets/images/maasai-mara-8-750x450.jpg" alt="Laikipia">
+            <div class="card-body">
+              <h3>Laikipia Plateau</h3>
+              <div class="meta">
+                <span class="date">December 3–9, 2026</span>
+                <span class="price">KES 132,000</span>
+              </div>
+              <div class="status unavailable">Fully booked</div>
+              <button class="btn disabled" disabled>Sold out</button>
+            </div>
+          </article>
+
+          <article class="card" data-available="true">
+            <img src="assets/images/hero (6).jpg" alt="Aberdare">
+            <div class="card-body">
+              <h3>Aberdare National Park</h3>
+              <div class="meta">
+                <span class="date">May 15–20, 2026</span>
+                <span class="price">KES 70,000</span>
+              </div>
+              <div class="status available">Available</div>
+              <a class="btn" href="#">Book Now</a>
+            </div>
+          </article>
+
+          <article class="card" data-available="true">
+            <img src="assets/images/hero (7).jpg" alt="Mount Kenya">
+            <div class="card-body">
+              <h3>Mount Kenya National Park</h3>
+              <div class="meta">
+                <span class="date">September 15–21, 2026</span>
+                <span class="price">KES 95,000</span>
+              </div>
+              <div class="status available">Available</div>
+              <a class="btn" href="#">Book Now</a>
+            </div>
+          </article>
+
+          <article class="card" data-available="true">
+            <img src="assets/images/hero (8).jpg" alt="Meru">
+            <div class="card-body">
+              <h3>Meru National Park</h3>
+              <div class="meta">
+                <span class="date">August 1–6, 2026</span>
+                <span class="price">KES 88,500</span>
+              </div>
+              <div class="status available">Available</div>
+              <a class="btn" href="#">Book Now</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-about">
+          <h3>Safaris Ke</h3>
+          <p>Passionate about responsible safaris across Kenya. Local guides, small groups, unforgettable wildlife encounters.</p>
+        </div>
+        <div class="footer-contact">
+          <h4>Contact</h4>
+          <p>Email: <a href="mailto:info@safariske.co.ke">info@safariske.co.ke</a></p>
+          <p>Phone: <a href="tel:+254700000000">+254 700 000 000</a></p>
+          <p>Address: Nairobi, Kenya</p>
+        </div>
+        <div class="footer-social">
+          <h4>Follow us</h4>
+          <div class="social-links">
+            <a href="#" aria-label="Facebook" class="social facebook"><img src="assets/logos/facebook.svg" alt="" class="social-icon">Facebook</a>
+            <a href="#" aria-label="Instagram" class="social instagram"><img src="assets/logos/instagram-icon.svg" alt="" class="social-icon">Instagram</a>
+            <a href="#" aria-label="X" class="social x"><img src="assets/logos/x.svg" alt="" class="social-icon">X</a>
+            <a href="#" aria-label="YouTube" class="social youtube"><img src="assets/logos/youtube-icon.svg" alt="" class="social-icon">YouTube</a>
+          </div>
+        </div>
+        <div class="footer-legal">
+          <h4>Legal</h4>
+          <a href="#">Privacy</a><br>
+          <a href="#">Terms</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Safaris Ke. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
