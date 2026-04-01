@@ -34,7 +34,7 @@ const Header = () => {
   };
 
   return (
-    <div className="navbar overlay-navbar">
+    <div className={`navbar overlay-navbar ${menuOpen ? 'open' : ''}`}>
       <div className="logo">
         <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
           <h1 className="logo-text">
