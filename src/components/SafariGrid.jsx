@@ -60,52 +60,140 @@ const safarisData = [
 
 const SafariGrid = () => {
   const [filter, setFilter] = useState('all');
+  const [selected, setSelected] = useState(null);
 
   const filteredSafaris = safarisData.filter(s => filter === 'all' || s.destination === filter);
 
   return (
-    <section className="safaris" style={{ padding: '60px 0' }}>
+    <section className="safaris">
       <div className="container">
-        <h2 style={{ textAlign: 'center', marginBottom: '10px' }}>Our Curated Safaris</h2>
-        <p className="intro" style={{ textAlign: 'center', marginBottom: '30px', color: '#666' }}>
-          Choose from curated safari packages across Kenya, Tanzania, and Uganda. Tailored specifically for you!
-        </p>
-
-        <div className="controls" style={{ display: 'flex', justifyContent: 'center', marginBottom: '40px' }}>
-          <div className="filters" role="tablist" aria-label="Filter safaris">
-            <button className={`filter ${filter === 'all' ? 'active' : ''}`} onClick={() => setFilter('all')}>All</button>
-            <button className={`filter ${filter === 'kenya' ? 'active' : ''}`} onClick={() => setFilter('kenya')}>Kenya</button>
-            <button className={`filter ${filter === 'tanzania' ? 'active' : ''}`} onClick={() => setFilter('tanzania')}>Tanzania</button>
-            <button className={`filter ${filter === 'uganda' ? 'active' : ''}`} onClick={() => setFilter('uganda')}>Uganda</button>
+        {/* Address / toolbar bar */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px',
+          padding: '3px 8px',
+          background: 'var(--win-face)',
+          borderBottom: '1px solid var(--win-shadow)',
+          fontSize: '11px',
+          fontFamily: 'Tahoma, Arial, sans-serif',
+        }}>
+          <span style={{ fontWeight: 700 }}>Address:</span>
+          <div style={{
+            flex: 1,
+            background: 'white',
+            borderTop: '1px solid var(--win-dark-shadow)',
+            borderLeft: '1px solid var(--win-dark-shadow)',
+            borderRight: '1px solid var(--win-highlight)',
+            borderBottom: '1px solid var(--win-highlight)',
+            padding: '1px 6px',
+            fontSize: '11px',
+            fontFamily: 'Tahoma, Arial, sans-serif',
+          }}>
+            🌍 C:\ZuruWildTrails\Safaris\
           </div>
         </div>
 
-        <div className="cards" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '30px' }}>
+        {/* Intro text */}
+        <p className="intro">
+          Choose from curated safari packages across Kenya, Tanzania, and Uganda. Tailored specifically for you!
+        </p>
+
+        {/* Filter toolbar */}
+        <div className="controls">
+          <div className="filters" role="tablist" aria-label="Filter safaris">
+            <button className={`filter ${filter === 'all' ? 'active' : ''}`} onClick={() => setFilter('all')}>
+              🗂 All
+            </button>
+            <button className={`filter ${filter === 'kenya' ? 'active' : ''}`} onClick={() => setFilter('kenya')}>
+              🇰🇪 Kenya
+            </button>
+            <button className={`filter ${filter === 'tanzania' ? 'active' : ''}`} onClick={() => setFilter('tanzania')}>
+              🇹🇿 Tanzania
+            </button>
+            <button className={`filter ${filter === 'uganda' ? 'active' : ''}`} onClick={() => setFilter('uganda')}>
+              🇺🇬 Uganda
+            </button>
+          </div>
+        </div>
+
+        {/* Cards grid */}
+        <div className="cards">
           {filteredSafaris.map(safari => (
-            <article key={safari.id} className="card" style={{ background: '#fff', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 4px 6px rgba(0,0,0,0.1)' }}>
-              <img src={safari.img} alt={safari.title} style={{ width: '100%', height: '220px', objectFit: 'cover' }} />
-              <div className="card-body" style={{ padding: '20px' }}>
-                <h3 style={{ fontSize: '1.25rem', marginBottom: '10px' }}>{safari.title}</h3>
-                <div className="meta" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '15px', color: '#555', fontSize: '0.9rem' }}>
-                  <span className="duration"><strong>Duration:</strong> {safari.duration}</span>
-                  <span className="price" style={{ color: '#001f3f', fontWeight: 'bold', fontSize: '1.1rem' }}>{safari.price}</span>
+            <article
+              key={safari.id}
+              className="card"
+              onClick={() => setSelected(safari.id === selected ? null : safari.id)}
+              style={{
+                outline: selected === safari.id ? '2px dotted var(--win-titlebar)' : 'none',
+                outlineOffset: '-2px',
+              }}
+            >
+              <img src={safari.img} alt={safari.title} />
+              <div className="card-body">
+                <h3>{safari.title}</h3>
+                <div className="meta">
+                  <span>📅 {safari.duration}</span>
+                  <span className="price">💲{safari.price.replace('From $', '')}</span>
                 </div>
-                <div className={`status ${safari.status === 'Available' ? 'available' : 'unavailable'}`} style={{ 
-                  display: 'inline-block', padding: '5px 12px', borderRadius: '4px', fontSize: '0.85rem', fontWeight: 'bold',
-                  backgroundColor: safari.status === 'Available' ? '#e6f4ea' : '#fce8e6',
-                  color: safari.status === 'Available' ? '#137333' : '#c5221f',
-                  marginBottom: '15px' 
-                }}>
-                  {safari.status}
-                </div>
+                <span className={`status ${safari.status === 'Available' ? 'available' : 'unavailable'}`}>
+                  {safari.status === 'Available' ? '✔ Available' : '✖ Fully Booked'}
+                </span>
                 {safari.status === 'Available' ? (
-                  <Link className="btn" to="/contact" style={{ display: 'block', textAlign: 'center', backgroundColor: '#001f3f', color: '#fff', padding: '12px', textDecoration: 'none', borderRadius: '6px', fontWeight: 'bold', transition: 'background-color 0.3s' }}>Inquire Now</Link>
+                  <Link className="btn" to="/contact">
+                    Inquire Now
+                  </Link>
                 ) : (
-                  <button className="btn disabled" disabled style={{ width: '100%', padding: '12px', border: 'none', backgroundColor: '#e0e0e0', color: '#777', borderRadius: '6px', fontWeight: 'bold' }}>Sold Out</button>
+                  <button className="btn disabled" disabled>
+                    Sold Out
+                  </button>
                 )}
               </div>
             </article>
           ))}
+        </div>
+
+        {/* Win2K status bar */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '2px',
+          padding: '2px 8px',
+          background: 'var(--win-face)',
+          borderTop: '2px solid var(--win-dark-shadow)',
+          fontSize: '11px',
+          fontFamily: 'Tahoma, Arial, sans-serif',
+        }}>
+          <div style={{
+            flex: 2,
+            borderTop: '1px solid var(--win-dark-shadow)',
+            borderLeft: '1px solid var(--win-dark-shadow)',
+            borderRight: '1px solid var(--win-highlight)',
+            borderBottom: '1px solid var(--win-highlight)',
+            padding: '1px 6px',
+          }}>
+            {filteredSafaris.length} object(s)
+          </div>
+          <div style={{
+            flex: 1,
+            borderTop: '1px solid var(--win-dark-shadow)',
+            borderLeft: '1px solid var(--win-dark-shadow)',
+            borderRight: '1px solid var(--win-highlight)',
+            borderBottom: '1px solid var(--win-highlight)',
+            padding: '1px 6px',
+          }}>
+            {filteredSafaris.filter(s => s.status === 'Available').length} available
+          </div>
+          <div style={{
+            flex: 1,
+            borderTop: '1px solid var(--win-dark-shadow)',
+            borderLeft: '1px solid var(--win-dark-shadow)',
+            borderRight: '1px solid var(--win-highlight)',
+            borderBottom: '1px solid var(--win-highlight)',
+            padding: '1px 6px',
+          }}>
+            🖥 Nairobi, Kenya
+          </div>
         </div>
       </div>
     </section>

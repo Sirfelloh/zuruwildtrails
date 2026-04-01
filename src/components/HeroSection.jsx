@@ -65,10 +65,10 @@ const HeroSection = () => {
           ))}
         </div>
 
-        <div className="hero-overlay slide-in-left">
-          <h1 style={{ fontSize: 'clamp(2rem, 6vw, 3.5rem)', lineHeight: '1.2', textShadow: '2px 2px 4px rgba(0,0,0,0.6)' }}>Zuru Wild Trails — Explore Africa's Wild Heart</h1>
-          <p style={{ fontSize: 'clamp(1rem, 3vw, 1.25rem)', textShadow: '1px 1px 3px rgba(0,0,0,0.6)' }}>Memorable safari experiences guided by experts. Authentic adventures, tailored for you.</p>
-          <Link className="cta" to="/about">Learn More</Link>
+        <div className="hero-overlay">
+          <h1>Zuru Wild Trails — Explore Africa&apos;s Wild Heart</h1>
+          <p>Memorable safari experiences guided by experts. Authentic adventures, tailored for you.</p>
+          <Link className="cta" to="/about">OK &gt;&gt; Learn More</Link>
         </div>
       </div>
     </section>

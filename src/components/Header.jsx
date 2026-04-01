@@ -34,12 +34,12 @@ const Header = () => {
   };
 
   return (
-    <div className="navbar overlay-navbar">
+    <div className="navbar">
       <div className="logo">
         <Link to="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
           <h1 className="logo-text">
-            <span style={{ color: '#fff', textShadow: '2px 2px 4px rgba(0,0,0,0.8)' }}>{text1}</span>
-            <span style={{ color: '#001f3f', textShadow: '2px 2px 0px #fff, -1px -1px 0 #fff' }}>{text2}</span>
+            <span>{text1}</span>
+            <span>{text2}</span>
             <span className="cursor">|</span>
           </h1>
         </Link>
